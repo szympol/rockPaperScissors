@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="rockPaperScissors">
+    <meta name="keywords" content="js game">
+    <meta name="author" content="Szymon Polanowski">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div>
+        <h1>Rock, Paper, Scissors</h1>
+        <h3>Choose your weapon and prepare to fight!</h3>
+        <button id="rock-button">rock</button>
+        <button id="paper-button">paper</button>
+        <button id="scissors-button">scissors</button>
+    </div>
+    <br>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div id="output"> </div>
+        </div>
+        <div class="col-md-6">
+            <div id="result"> </div>
+            <div class="scoreboard-placement">
+                <div id="scoreboard">
+                    <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
+                    <p class="scoreboard-row" id="playerDraws"><strong>Total Draws: </strong><span id="draws">0</span></p>
+                    <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+                </div>
+            </div><!-- end of scoreboard-placement -->
+            <div class="row">
+                <div class="col-md-6">
+                    <button id="newGame" type="button" class="btn-primary">New game</button>
+                </div>
+                <div class="col-md-6">
+                    <button id="clear" type="button" class="btn-warning">Clear</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="js/script.js" async defer></script>
+</body>
+
+</html>

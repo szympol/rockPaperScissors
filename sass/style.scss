@@ -1,0 +1,79 @@
+@import "variables";
+@import "mixins";
+@import "normalize";
+@import "layout";
+/* Components */
+@import "components/form_field";
+
+/* Sections */
+@import "sections/registration_form";
+
+/* Pages / Views */
+@import "pages/registration";
+
+* {
+    box-sizing: border-box;
+    font-family: $openSans;
+}
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    padding: 11px 50px;
+    max-width: 100%;
+
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    color: #fff;
+    background-color: #02ac46;
+    border: 2px solid #02ac46;
+    border-radius: 4px;
+
+    transition: color .3s, background-color .3s;
+
+    cursor: pointer;
+    outline: 0 !important;
+    text-decoration: none;
+    touch-action: manipulation;
+    user-select: none;
+
+    &:hover,
+    &:active {
+        color: #02ac46;
+        background-color: #fff;
+    }
+}
+
+.scoreboard-placement {
+    margin: 0px 15px 0px 15px;
+    border-top: 1px solid lightgrey;
+    text-align: center;
+}
+
+.scoreboard-row {
+    font-size: 18px;
+    display: inline-block;
+}
+
+#playerWins {
+    margin-right: 40px;
+}
+
+#playerLosses {
+    margin-left: 40px;
+}
