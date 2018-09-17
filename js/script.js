@@ -36,6 +36,12 @@ disabledButtons(true);
 //starting a new game
 function newGame() {
     clear();
+    displayNone();
+    displayNoneRemoveOfChooseText();
+    displayNoneActivateOfSadCry();
+    displayNoneAcivateOfLaughWink();
+    displayNoneActivateOfTryAgain();
+    animationRemoveFinalResult();
     rounds = window.prompt('How many wins end the game?');
     if (isNaN(rounds) || rounds === '' || rounds === null || rounds < 1) {
         return result.innerHTML = 'Wrong Value. Try one more time' + '<br>';
@@ -80,9 +86,17 @@ var scores = function () {
     if (wins == rounds) {
         result.innerHTML = ('YOU WON THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
+        displayNoneActiv();
+        displayNoneRemoveOfLaughWink();
+        displayNoneRemoveOfTryAgain();
+        animationAddFinalResult();
     } else if (losses == rounds) {
         result.innerHTML = ('YOU LOST THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
+        displayNoneActiv();
+        displayNoneRemoveOfSadCry();
+        displayNoneRemoveOfTryAgain();
+        animationAddFinalResult();
     }
 };
 
@@ -90,6 +104,7 @@ var scores = function () {
 var playerMove = function (userChoice) {
     compare(userChoice, computerChoice());
     scores();
+    displayNoneActivateOfChooseText();
 };
 
 //computer random choice
@@ -149,4 +164,66 @@ var compare = function (choice1, choice2, rounds) {
             winning.textContent = wins;
         }
     }
+};
+
+//remove display none of Icons
+function displayNone(){
+    var displayNone = document.getElementById('buttonAll');
+    displayNone.classList.remove('displayNone');
+};
+
+//add display none of Icons
+function displayNoneActiv(){
+    var displayNoneActiv = document.getElementById('buttonAll');
+    displayNoneActiv.classList.add('displayNone');
+}
+
+//remove and add display none of Icon of winning
+function displayNoneRemoveOfLaughWink(){
+    var displayNoneRemoveOfLaughWink = document.querySelector('#laughWink i');
+    displayNoneRemoveOfLaughWink.classList.remove('displayNone');
+};
+function displayNoneAcivateOfLaughWink(){
+    var displayNoneAcivateOfLaughWink = document.querySelector('#laughWink i');
+    displayNoneAcivateOfLaughWink.classList.add('displayNone');
+};
+
+//remove and add display none of Icon of losing
+function displayNoneRemoveOfSadCry(){
+    var displayNoneRemoveOfSadCry = document.querySelector('#sadCry i');
+    displayNoneRemoveOfSadCry.classList.remove('displayNone');
+};
+function displayNoneActivateOfSadCry(){
+    var displayNoneActivateOfSadCry = document.querySelector('#sadCry i');
+    displayNoneActivateOfSadCry.classList.add('displayNone');
+};
+
+//remove and add display none of Choose text
+function displayNoneRemoveOfChooseText(){
+    var displayNoneRemoveOfChooseText = document.querySelector('#chooseText h3');
+    displayNoneRemoveOfChooseText.classList.remove('displayNone');
+};
+function displayNoneActivateOfChooseText(){
+    var displayNoneActivateOfChooseText = document.querySelector('#chooseText h3');
+    displayNoneActivateOfChooseText.classList.add('displayNone');
+};
+
+//remove and add display none of Choose text
+function displayNoneRemoveOfTryAgain(){
+    var displayNoneRemoveOfTryAgain = document.querySelector('#tryAgain h3');
+    displayNoneRemoveOfTryAgain.classList.remove('displayNone');
+};
+function displayNoneActivateOfTryAgain(){
+    var displayNoneActivateOfTryAgain = document.querySelector('#tryAgain h3');
+    displayNoneActivateOfTryAgain.classList.add('displayNone');
+};
+
+//remove and add animation to final result
+function animationRemoveFinalResult(){
+    var animationRemoveFinalResult = document.getElementById('result');
+    animationRemoveFinalResult.classList.remove('flicker-in-1');
+};
+function animationAddFinalResult(){
+    var animationAddFinalResult = document.getElementById('result');
+    animationAddFinalResult.classList.add('flicker-in-1');
 };
