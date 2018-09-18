@@ -15,7 +15,8 @@
     <meta name="author" content="Szymon Polanowski">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
@@ -29,15 +30,15 @@
     <div>
         <h1><strong>Rock, Paper, Scissors</strong></h1>
         <div id="chooseText">
-            <h3>Choose your weapon and prepare to fight!</h3>
+            <h3>Press the New game button to start a game</h3>
         </div>
         <div id="tryAgain">
             <h3 class="displayNone bounce-in-right">You can play again by clicking at 'New game' button</h3>
         </div>
         <div id="buttonAll" class="displayNone">
-         <button id="rock-button" class="buttonIcon" data-move="rock-button"><i class="fa fa-hand-rock"></i></button>
-         <button id="paper-button" class="buttonIcon" data-move="paper-button"><i class="fa fa-hand-paper"></i></button>
-         <button id="scissors-button" class="buttonIcon" data-move="scissors-button"><i class="fa fa-hand-scissors"></i></button>
+            <button id="rock-button" class="buttonIcon" data-move="rock-button"><i class="fa fa-hand-rock"></i></button>
+            <button id="paper-button" class="buttonIcon" data-move="paper-button"><i class="fa fa-hand-paper"></i></button>
+            <button id="scissors-button" class="buttonIcon" data-move="scissors-button"><i class="fa fa-hand-scissors"></i></button>
         </div>
         <div id="laughWink">
             <i class="fa fa-laugh-wink displayNone"></i>
@@ -48,24 +49,30 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <div id="output"></div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <div id="result"> </div>
             <div class="scoreboard-placement">
-                <div id="scoreboard">
-                    <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
-                    <p class="scoreboard-row" id="playerDraws"><strong>Total Draws: </strong><span id="draws">0</span></p>
-                    <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+                <div id="scoreboard" class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="scoreboard-row" id="playerDraws"><strong>Total Draws: </strong><span id="draws">0</span></p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+                    </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <button id="newGame" type="button" class="btn btn-primary btn-lg">New game</button>
                     </div>
                 </div>
-            </div><!-- end of scoreboard-placement -->
- 
+            </div>
+
 
         </div>
 

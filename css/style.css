@@ -127,7 +127,7 @@ body { padding: 10px; margin: 0 auto; height: 100vh; text-align: center; padding
 
 .fa:hover { color: #f1c40f; background: transparent; transform: scale(1.5); }
 
-.btn-primary { background-color: #000; outline: none; }
+.btn-primary { background-color: #000; outline: none; margin-top: 15px; }
 
 .displayNone { display: none; }
 
@@ -203,3 +203,16 @@ body { padding: 10px; margin: 0 auto; height: 100vh; text-align: center; padding
   86% { opacity: 0; }
   86.1% { opacity: 1; }
   100% { opacity: 1; } }
+
+@media (max-width: 767px) { #scoreboard > div:nth-of-type(1) > p > #wins { display: block; }
+  #scoreboard > div:nth-of-type(2) > p > #draws { display: block; }
+  #scoreboard > div:nth-of-type(3) > p > #losses { display: block; }
+  .fa { font-size: 45px; padding: 10px 25px 50px 25px; } }
+
+@media (min-width: 768px) { #scoreboard > div:nth-of-type(1) { text-align: right; margin-left: 50px; }
+  #scoreboard > div:nth-of-type(2) { text-align: center; margin-right: -50px; margin-left: -50px; }
+  #scoreboard > div:nth-of-type(3) { text-align: left; } }
+
+@media (min-width: 992px) { #scoreboard > div:nth-of-type(1) { text-align: right; margin-left: 100px; }
+  #scoreboard > div:nth-of-type(2) { text-align: center; margin-right: -100px; margin-left: -100px; }
+  #scoreboard > div:nth-of-type(3) { text-align: left; } }
