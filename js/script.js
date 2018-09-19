@@ -36,19 +36,19 @@ disabledButtons(true);
 //starting a new game
 function newGame() {
     clear();
-    displayNone();
-    displayNoneRemoveOfChooseText();
-    displayNoneActivateOfSadCry();
-    displayNoneAcivateOfLaughWink();
-    displayNoneActivateOfTryAgain();
-    animationRemoveFinalResult();
+    unhideRockPaperScissorsIcons();
+    unhideHowToStartGameText();
+    hideWinnerIcon();
+    hideLoserIcon();
+    hideHowToStartGameAfterOne();
+    unhideAnimationHowToStartNewGame();
     rounds = window.prompt('How many wins should end the game?');
     if (isNaN(rounds) || rounds === '' || rounds === null || rounds < 1) {
         disabledButtons(true);
        return result.innerHTML = 'Wrong Value. Try one more time' + '<br>';
     }
     result.innerHTML = ('We play to ' + rounds + ' wins' + '<br>');
-    displayNoneActivateOfChooseText();
+    hideHowToStartGameText();
 };
 
 // clear scores
@@ -67,17 +67,17 @@ function clear() {
 };
 
 //listening to rock-paper-scissors buttons/icons when being clicked/chosen
-var rockButtonClick = rockButton.addEventListener('click', function () {
+rockButton.addEventListener('click', function () {
     var userChoice = 'rock';
     output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
     playerMove(userChoice);
 });
-var paperButtonClick = paperButton.addEventListener('click', function () {
+paperButton.addEventListener('click', function () {
     var userChoice = 'paper';
     output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
     playerMove(userChoice);
 });
-var scissorsButtonClick = scissorsButton.addEventListener('click', function () {
+scissorsButton.addEventListener('click', function () {
     var userChoice = 'scissors';
     output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
     playerMove(userChoice);
@@ -88,17 +88,17 @@ var scores = function () {
     if (wins == rounds) {
         result.innerHTML = ('YOU WON THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
-        displayNoneActiv();
-        displayNoneRemoveOfLaughWink();
-        displayNoneRemoveOfTryAgain();
-        animationAddFinalResult();
+        hideRockPaperScissorsIcons();
+        unhideWinnerIcon();
+        unhideHowToStartGameAfterOne();
+        hideAnimationHowToStartNewGame();
     } else if (losses == rounds) {
         result.innerHTML = ('YOU LOST THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
-        displayNoneActiv();
-        displayNoneRemoveOfSadCry();
-        displayNoneRemoveOfTryAgain();
-        animationAddFinalResult();
+        hideRockPaperScissorsIcons();
+        unhideLoserIcon();
+        unhideHowToStartGameAfterOne();
+        hideAnimationHowToStartNewGame();
     }
 };
 
@@ -106,7 +106,7 @@ var scores = function () {
 var playerMove = function (userChoice) {
     compare(userChoice, computerChoice());
     scores();
-    displayNoneActivateOfChooseText();
+    hideHowToStartGameText();
 };
 
 //computer random choice
@@ -169,68 +169,68 @@ var compare = function (choice1, choice2, rounds) {
 };
 
 //remove display none of Icons
-function displayNone() {
-    var displayNone = document.getElementById('buttonAll');
-    displayNone.classList.remove('displayNone');
+function unhideRockPaperScissorsIcons() {
+    var unhideRockPaperScissorsIcons = document.getElementById('buttonAll');
+    unhideRockPaperScissorsIcons.classList.remove('displayNone');
 };
 
 //add display none of Icons
-function displayNoneActiv() {
-    var displayNoneActiv = document.getElementById('buttonAll');
-    displayNoneActiv.classList.add('displayNone');
+function hideRockPaperScissorsIcons() {
+    var hideRockPaperScissorsIcons = document.getElementById('buttonAll');
+    hideRockPaperScissorsIcons.classList.add('displayNone');
 }
 
 //remove and add display none of Icon of winning
-function displayNoneRemoveOfLaughWink() {
-    var displayNoneRemoveOfLaughWink = document.querySelector('#laughWink i');
-    displayNoneRemoveOfLaughWink.classList.remove('displayNone');
+function unhideWinnerIcon() {
+    var unhideWinnerIcon = document.querySelectorAll('#laughWinkSadCry i:first-child');
+    unhideWinnerIcon.classList.remove('displayNone');
 };
 
-function displayNoneAcivateOfLaughWink() {
-    var displayNoneAcivateOfLaughWink = document.querySelector('#laughWink i');
-    displayNoneAcivateOfLaughWink.classList.add('displayNone');
+function hideWinnerIcon() {
+    var hideWinnerIcon = document.querySelectorAll('#laughWinkSadCry i:first-child');
+    hideWinnerIcon.classList.add('displayNone');
 };
 
 //remove and add display none of Icon of losing
-function displayNoneRemoveOfSadCry() {
-    var displayNoneRemoveOfSadCry = document.querySelector('#sadCry i');
-    displayNoneRemoveOfSadCry.classList.remove('displayNone');
+function unhideLoserIcon() {
+    var unhideLoserIcon = document.querySelectorAll('#laughWinkSadCry i:nth-child(2)');
+    unhideLoserIcon.classList.remove('displayNone');
 };
 
-function displayNoneActivateOfSadCry() {
-    var displayNoneActivateOfSadCry = document.querySelector('#sadCry i');
-    displayNoneActivateOfSadCry.classList.add('displayNone');
-};
-
-//remove and add display none of Choose text
-function displayNoneRemoveOfChooseText() {
-    var displayNoneRemoveOfChooseText = document.querySelector('#chooseText h3');
-    displayNoneRemoveOfChooseText.classList.remove('displayNone');
-};
-
-function displayNoneActivateOfChooseText() {
-    var displayNoneActivateOfChooseText = document.querySelector('#chooseText h3');
-    displayNoneActivateOfChooseText.classList.add('displayNone');
+function hideLoserIcon() {
+    var hideLoserIcon = document.querySelectorAll('#laughWinkSadCry i:nth-child(2)');
+    hideLoserIcon.classList.add('displayNone');
 };
 
 //remove and add display none of Choose text
-function displayNoneRemoveOfTryAgain() {
-    var displayNoneRemoveOfTryAgain = document.querySelector('#tryAgain h3');
-    displayNoneRemoveOfTryAgain.classList.remove('displayNone');
+function unhideHowToStartGameText() {
+    var unhideHowToStartGameText = document.querySelector('#chooseText h3');
+    unhideHowToStartGameText.classList.remove('displayNone');
 };
 
-function displayNoneActivateOfTryAgain() {
-    var displayNoneActivateOfTryAgain = document.querySelector('#tryAgain h3');
-    displayNoneActivateOfTryAgain.classList.add('displayNone');
+function hideHowToStartGameText() {
+    var hideHowToStartGameText = document.querySelector('#chooseText h3');
+    hideHowToStartGameText.classList.add('displayNone');
+};
+
+//remove and add display none of Choose text
+function unhideHowToStartGameAfterOne() {
+    var unhideHowToStartGameAfterOne = document.querySelector('#tryAgain h3');
+    unhideHowToStartGameAfterOne.classList.remove('displayNone');
+};
+
+function hideHowToStartGameAfterOne() {
+    var hideHowToStartGameAfterOne = document.querySelector('#tryAgain h3');
+    hideHowToStartGameAfterOne.classList.add('displayNone');
 };
 
 //remove and add animation to final result
-function animationRemoveFinalResult() {
-    var animationRemoveFinalResult = document.getElementById('result');
-    animationRemoveFinalResult.classList.remove('flicker-in-1');
+function unhideAnimationHowToStartNewGame() {
+    var unhideAnimationHowToStartNewGame = document.getElementById('result');
+    unhideAnimationHowToStartNewGame.classList.remove('flicker-in-1');
 };
 
-function animationAddFinalResult() {
-    var animationAddFinalResult = document.getElementById('result');
-    animationAddFinalResult.classList.add('flicker-in-1');
+function hideAnimationHowToStartNewGame() {
+    var hideAnimationHowToStartNewGame = document.getElementById('result');
+    hideAnimationHowToStartNewGame.classList.add('flicker-in-1');
 };
