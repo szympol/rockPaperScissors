@@ -183,24 +183,25 @@ function hideRockPaperScissorsIcons() {
 //remove and add display none of Icon of winning
 function unhideWinnerIcon() {
     var unhideWinnerIcon = document.querySelectorAll('#laughWinkSadCry i:first-child');
-    unhideWinnerIcon.classList.remove('displayNone');
+    unhideWinnerIcon[0].classList.remove('displayNone');
 };
 
 function hideWinnerIcon() {
     var hideWinnerIcon = document.querySelectorAll('#laughWinkSadCry i:first-child');
-    hideWinnerIcon.classList.add('displayNone');
+    hideWinnerIcon[0].classList.add('displayNone');
 };
 
 //remove and add display none of Icon of losing
 function unhideLoserIcon() {
     var unhideLoserIcon = document.querySelectorAll('#laughWinkSadCry i:nth-child(2)');
-    unhideLoserIcon.classList.remove('displayNone');
+    unhideLoserIcon[0].classList.remove('displayNone');
 };
 
 function hideLoserIcon() {
     var hideLoserIcon = document.querySelectorAll('#laughWinkSadCry i:nth-child(2)');
-    hideLoserIcon.classList.add('displayNone');
+    hideLoserIcon[0].classList.add('displayNone');
 };
+
 
 //remove and add display none of Choose text
 function unhideHowToStartGameText() {
