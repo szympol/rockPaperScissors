@@ -4,12 +4,11 @@
 var output = document.getElementById('output');
 var result = document.getElementById('result');
 var playerMoveElements = document.querySelectorAll('.player-move');
+var modals = document.querySelectorAll('.modal');
+var overlay = document.querySelector('.overlay');
+var btnClose = document.querySelector('.close');
+var tableBody = document.querySelector('.table-body');
 
-
-var wins = 0;
-var losses = 0;
-var draws = 0;
-var rounds = 0;
 
 //declaring variables of a scoreboard
 var winning = document.getElementById('wins');
@@ -21,9 +20,23 @@ var rockButton = document.getElementById('rock-button');
 var paperButton = document.getElementById('paper-button');
 var scissorsButton = document.getElementById('scissors-button');
 
+//objects and functions
+var params = {
+    wins: 0,
+    losses: 0,
+    draws: 0,
+    rounds: 0,
+    gamePossible: false,
+    progress: [],
+    tableRow: [],
+    currentRound: 0,
+    nthInit: false,
+}
+
 //listening to clear and new game buttons
-//document.getElementById("clear").addEventListener("click", clear);
 document.getElementById('newGame').addEventListener('click', newGame);
+btnClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
 
 //disabling icons
 var disabledButtons = function (isDisabled) {
@@ -45,12 +58,12 @@ function newGame() {
     hideLoserIcon();
     hideHowToStartGameAfterOne();
     unhideAnimationHowToStartNewGame();
-    rounds = window.prompt('How many wins should end the game?');
-    if (isNaN(rounds) || rounds === '' || rounds === null || rounds < 1) {
+    params.rounds = window.prompt('How many wins should end the game?');
+    if (isNaN(params.rounds) || params.rounds === '' || params.rounds === null || params.rounds < 1) {
         disabledButtons(true);
        return result.innerHTML = 'Wrong Value. Try one more time' + '<br>';
     }
-    result.innerHTML = ('We play to ' + rounds + ' wins' + '<br>');
+    result.innerHTML = ('We play to ' + params.rounds + ' wins' + '<br>');
     hideHowToStartGameText();
 };
 
@@ -60,12 +73,20 @@ function clear() {
     document.getElementById('wins').innerHTML = "0";
     document.getElementById('draws').innerHTML = "0";
     document.getElementById('losses').innerHTML = "0";
-    wins = 0;
-    losses = 0;
-    draws = 0;
-    rounds = 0;
+    params.wins = 0;
+    params.losses = 0;
+    params.draws = 0;
+    params.rounds = 0;
+    output.classList.remove('hide');
     output.innerHTML = '';
     result.innerHTML = '';
+    params.gamePossible = true;
+    params.tableRow = [];
+    params.progress = [];
+    tableBody.innerHTML = '';
+    params.currentRound = 0;
+    params.nthInit = true;
+
     // zrobić z remove, być może przez to że nie ma spana i że to nie podmienia tylko ciągle dodaje nowe linijki patrz. vitories draws and defeat, zrobić spana na całośc ale aktywować tylko przy clearu mam nadzieje ze zrozumiesz pozniej
 };
 
@@ -88,22 +109,52 @@ scissorsButton.addEventListener('click', function () {
 
 //stops the game and disables buttons/icons when the number of wins/losses equals the number of wins/losses limits input by prompt at the beginning of a game
 var scores = function () {
-    if (wins == rounds) {
+    if (params.wins == params.rounds) {
         result.innerHTML = ('YOU WON THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
         hideRockPaperScissorsIcons();
         unhideWinnerIcon();
         unhideHowToStartGameAfterOne();
         hideAnimationHowToStartNewGame();
-    } else if (losses == rounds) {
+        params.gamePossible = false;
+        showEndGameTable();
+    } else if (params.losses == params.rounds) {
         result.innerHTML = ('YOU LOST THE ENTIRE GAME!!!' + '<br>');
         disabledButtons(true);
         hideRockPaperScissorsIcons();
         unhideLoserIcon();
         unhideHowToStartGameAfterOne();
         hideAnimationHowToStartNewGame();
+        params.gamePossible = false;
+        showEndGameTable();
     }
 };
+
+// listeners for player moves
+for (var i = 0; i < playerMoveElements.length; i++) {
+    playerMoveElements[i].addEventListener('click', function () {
+      if (params.gamePossible === true) {
+        compare(this.getAttribute('data-move'));
+      }
+    });
+  }
+// listeners for modal
+var buttons = document.querySelectorAll('.buttonIcon');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function () {
+    if (params.gamePossible === false & params.nthInit == true) {
+      //output.classList.add('hide'); // znika pole output
+      showModal();
+    }
+  });
+}
+
+function showEndGameTable() {
+    for (var i = 0; i < params.progress.length; i++) {
+      params.tableRow.push('<tr><td>' + params.progress[i].rounds + '</td><td>' + params.progress[i].plMove + '</td><td>' + params.progress[i].cpMove + '</td><td>' + params.progress[i].roundResult + '</td><td>' + params.progress[i].gameResult + '</td></tr>');
+      tableBody.innerHTML += params.tableRow[i];
+    }
+  }
 
 //sequence of actions afer userChoice, it triggers the function that compares results between choices of user and computer adn then it checks if the limit of games is equal to wins/losses
 var playerMove = function (userChoice) {
@@ -130,45 +181,60 @@ var computerChoice = function () {
 var compare = function (choice1, choice2, rounds) {
     if (choice1 === choice2) {
         output.innerHTML = ('It is a tie!');
-        draws++;
-        drawing.textContent = draws;
+        params.draws++;
+        drawing.textContent = params.draws;
+        roundResult = '0 : 0';
     } else if (choice1 === 'rock') {
         if (choice2 === 'scissors') {
             // rock wins
             output.innerHTML = ('You won: you played ROCK, computer played SCISSORS');
-            wins++;
-            winning.textContent = wins;
+            params.wins++;
+            winning.textContent = params.wins;
+            roundResult = '1 : 0';
         } else {
             // paper wins
             output.innerHTML = ('You lost: you played ROCK, computer played PAPER');
-            losses++;
-            losing.textContent = losses;
+            params.losses++;
+            losing.textContent = params.losses;
+            roundResult = '0 : 1';
         }
     } else if (choice1 === 'paper') {
         if (choice2 === 'rock') {
             // paper wins
             output.innerHTML = ('You won: you played PAPER, computer played ROCK');
-            wins++;
-            winning.textContent = wins;
+            params.wins++;
+            winning.textContent = params.wins;
+            roundResult = '1 : 0';
         } else {
             // scissors wins
             output.innerHTML = ('You lost: you played PAPER, computer played SCISSORS');
-            losses++;
-            losing.textContent = losses;
+            params.losses++;
+            losing.textContent = params.losses;
+            roundResult = '0 : 1';
         }
     } else if (choice1 === 'scissors') {
         if (choice2 === 'rock') {
             // rock wins
             output.innerHTML = ('You lost: you played SCISSORS, computer played ROCK');
-            losses++;
-            losing.textContent = losses;
+            params.losses++;
+            losing.textContent = params.losses;
+            roundResult = '0 : 1';
         } else {
             // scissors wins
             output.innerHTML = ('You won: you played SCISSORS, computer played PAPER');
-            wins++;
-            winning.textContent = wins;
+            params.wins++;
+            winning.textContent = params.wins;
+            roundResult = '1 : 0';
         }
     }
+    params.currentRound++;
+    params.progress.push({
+        rounds: params.currentRound,
+        plMove: userChoice,
+        cpMove: random,
+        roundResult: roundResult,
+        gameResult: params.wins + ' : ' + params.losses
+      });
 };
 
 //remove display none of Icons
@@ -240,26 +306,24 @@ function hideAnimationHowToStartNewGame() {
 };
 
 
-/*
+
+// modal
 
 function showModal() {
-    // do modala dodaj klase show || 
-    // do overlaya dodaj klase show
     overlay.classList.add('show');
     modals[0].classList.add('show');
   };
   
   function closeModal(event) {
-    // niech sie uruchamia po nacisnieciu x z klasą close i niech usówa klase show z modala i overlaya
     event.stopPropagation();
     overlay.classList.remove('show');
     modals[0].classList.remove('show');
   }
-  // usuniecie propagacji
+ 
   (function delPropagation() {
     for (var i = 0; i < modals.length; i++) {
       modals[i].addEventListener('click', function (event) {
         event.stopPropagation();
       })
     };
-  })();*/
+  })();
