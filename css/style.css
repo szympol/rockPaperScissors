@@ -208,6 +208,18 @@ body { padding: 10px; margin: 0 auto; height: 100vh; text-align: center; padding
   86.1% { opacity: 1; }
   100% { opacity: 1; } }
 
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
+
+.overlay.show { display: block; }
+
+.modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 30px; border: 2px dashed #000; background-color: #fff; }
+
+.modal.show { display: block; }
+
+.close { position: absolute; top: 5px; right: 5px; color: #d1d1d1; transition: color 0.3s ease-in-out; }
+
+.close:hover { color: #000; }
+
 @media (max-width: 767px) { #scoreboard > div:nth-of-type(1) > p > #wins { display: block; }
   #scoreboard > div:nth-of-type(2) > p > #draws { display: block; }
   #scoreboard > div:nth-of-type(3) > p > #losses { display: block; }

@@ -3,6 +3,8 @@
 
 var output = document.getElementById('output');
 var result = document.getElementById('result');
+var playerMoveElements = document.querySelectorAll('.player-move');
+
 
 var wins = 0;
 var losses = 0;
@@ -31,6 +33,7 @@ var disabledButtons = function (isDisabled) {
 };
 
 //buttons disabled before the beginning of a game
+
 disabledButtons(true);
 
 //starting a new game
@@ -235,3 +238,28 @@ function hideAnimationHowToStartNewGame() {
     var hideAnimationHowToStartNewGame = document.getElementById('result');
     hideAnimationHowToStartNewGame.classList.add('flicker-in-1');
 };
+
+
+/*
+
+function showModal() {
+    // do modala dodaj klase show || 
+    // do overlaya dodaj klase show
+    overlay.classList.add('show');
+    modals[0].classList.add('show');
+  };
+  
+  function closeModal(event) {
+    // niech sie uruchamia po nacisnieciu x z klasą close i niech usówa klase show z modala i overlaya
+    event.stopPropagation();
+    overlay.classList.remove('show');
+    modals[0].classList.remove('show');
+  }
+  // usuniecie propagacji
+  (function delPropagation() {
+    for (var i = 0; i < modals.length; i++) {
+      modals[i].addEventListener('click', function (event) {
+        event.stopPropagation();
+      })
+    };
+  })();*/
