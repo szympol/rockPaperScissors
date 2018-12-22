@@ -143,46 +143,17 @@ var compare = function (choice1, choice2) {
         params.draws++;
         drawing.textContent = params.draws;
         winner = 'tie';
-    } else if (choice1 === 'rock') {
-        if (choice2 === 'scissors') {
-            // rock wins
-            output.innerHTML = ('You won: you played ' + choice1 + ' computer played ' + choice2);
-            params.wins++;
-            winning.textContent = params.wins;
-            winner = 'user';
-        } else {
-            // paper wins
-            output.innerHTML = ('You lost: you played ROCK, computer played PAPER');
-            params.losses++;
-            losing.textContent = params.losses;
-            winner = 'computer';
-        }
-    } else if (choice1 === 'paper') {
-        if (choice2 === 'rock') {
-            // paper wins
-            output.innerHTML = ('You won: you played PAPER, computer played ROCK');
-            params.wins++;
-            winning.textContent = params.wins;
-        } else {
-            // scissors wins
-            output.innerHTML = ('You lost: you played PAPER, computer played SCISSORS');
-            params.losses++;
-            losing.textContent = params.losses;
-        }
-    } else if (choice1 === 'scissors') {
-        if (choice2 === 'rock') {
-            // rock wins
-            output.innerHTML = ('You lost: you played SCISSORS, computer played ROCK');
-            params.losses++;
-            losing.textContent = params.losses;
-        } else {
-            // scissors wins
-            output.innerHTML = ('You won: you played SCISSORS, computer played PAPER');
-            params.wins++;
-            winning.textContent = params.wins;
-        }
+    } else if (choice1 === 'rock' && choice2 === 'scissors' || choice1 === 'paper' && choice2 === 'rock' || choice1 === 'scissors' && choice2 === 'paper') {
+        output.innerHTML = ('You won: you played ' + choice1 + ' computer played ' + choice2);
+        params.wins++;
+        winning.textContent = params.wins;
+        winner = 'user';
+    } else if (choice1 === 'rock' && choice2 === 'paper' || choice1 === 'paper' && choice2 === 'scissors' || choice1 === 'scissors' && choice2 === 'rock'){
+        output.innerHTML = ('You lost: you played ' + choice1 + ' computer played ' + choice2);
+        params.losses++;
+        losing.textContent = params.losses;
+        winner = 'computer';
     }
-
     params.results.push({
         player: choice1,
         computer: choice2,
