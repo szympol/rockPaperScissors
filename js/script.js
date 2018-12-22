@@ -9,6 +9,7 @@ var params = {
     losses: 0,
     draws: 0,
     rounds: 0,
+    tableRow: [],
     results: []
 }
 
@@ -79,25 +80,10 @@ function clear() {
     params.rounds = 0;
     output.innerHTML = '';
     result.innerHTML = '';
-    // zrobić z remove, być może przez to że nie ma spana i że to nie podmienia tylko ciągle dodaje nowe linijki patrz. vitories draws and defeat, zrobić spana na całośc ale aktywować tylko przy clearu mam nadzieje ze zrozumiesz pozniej
+    params.results = [];
+    params.tableRow = [];
 };
 
-//listening to rock-paper-scissors buttons/icons when being clicked/chosen OBSOLETE because 24
-/* rockButton.addEventListener('click', function () {
-    var userChoice = 'rock';
-    output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
-    playerMove(userChoice);
-});
-paperButton.addEventListener('click', function () {
-    var userChoice = 'paper';
-    output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
-    playerMove(userChoice);
-});
-scissorsButton.addEventListener('click', function () {
-    var userChoice = 'scissors';
-    output.innerHTML = ('<br>' + 'You have chosen ' + userChoice + '<br><br>');
-    playerMove(userChoice);
-}); */
 
 //stops the game and disables buttons/icons when the number of wins/losses equals the number of wins/losses limits input by prompt at the beginning of a game
 var scores = function () {
@@ -114,7 +100,8 @@ var scores = function () {
         hideRockPaperScissorsIcons();
         unhideHowToStartGameAfterOne();
         hideAnimationHowToStartNewGame();
-
+        showModal(event);
+        tableScore();
     }
 };
 
@@ -137,7 +124,7 @@ var computerChoice = function () {
 //compares results between choices of user and computer
 var compare = function (choice1, choice2) {
    var winner;
-
+    
     if (choice1 === choice2) {
         output.innerHTML = ('It is a tie!');
         params.draws++;
@@ -157,9 +144,56 @@ var compare = function (choice1, choice2) {
     params.results.push({
         player: choice1,
         computer: choice2,
-        winner: winner
+        winner: winner,
+        gameResult: params.wins + ' : ' + params.losses
     })
 };
+
+//modal to show a table score
+
+var showModal = function(event){
+    event.preventDefault();
+    var modals = document.querySelectorAll('.modal1');
+    for (i=0; i < modals.length; i++ ) {
+        modals[i].classList.remove('show');
+    }
+    
+    document.querySelector('#modal-overlay1').classList.add('show');
+    document.querySelector('.modal1').classList.add('show');
+    
+    };
+
+
+var hideModal = function(event){
+    event.preventDefault();
+    document.querySelector('#modal-overlay1').classList.remove('show');
+};
+
+var closeButtons = document.querySelectorAll('.modal1 .close1');
+
+for(var i = 0; i < closeButtons.length; i++){
+    closeButtons[i].addEventListener('click', hideModal);
+}
+
+document.querySelector('#modal-overlay1').addEventListener('click', hideModal);
+
+var modals = document.querySelectorAll('.modal1');
+for(var i = 0; i < modals.length; i++){
+    modals[i].addEventListener('click', function(event){
+        event.stopPropagation();
+    });
+}
+
+
+//table score
+function tableScore(){
+    var tbody = document.querySelector('tbody');
+    for (var i = 0; i < params.results.length; i++) {
+        var roundNumber = i + 1;
+        params.tableRow.push('<tr><td>' + roundNumber + '</td><td>' + params.results[i].player + '</td><td>' + params.results[i].computer + '</td><td>' + params.results[i].winner + '</td><td>' + params.results[i].gameResult + '</td></tr>');
+        tbody.innerHTML += params.tableRow[i];
+    }
+}
 
 
 //remove display none of Icons

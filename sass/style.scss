@@ -53,14 +53,6 @@ body {
   font-size: 18px;
   display: inline-block;
 }
-/*
-#playerWins {
-  margin-right: 40px;
-}
-
-#playerLosses {
-  margin-left: 40px;
-}*/
 
 .fa {
   font-size: 70px;
@@ -103,6 +95,35 @@ body {
   font-size: 35px;
   font-weight: bold;
 }
+
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 50px;
+}
+
+
+.overlay1 { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); }
+
+.overlay1.show { display: block; }
+
+.modal1 { display: none; background: #fff; width: 500px; position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0); }
+
+.modal1.show { display: block; }
+
+.modal1 .close1 { position: absolute; right: 0; top: 0; padding: 5px; color: #000; text-decoration: none; }
+
+.modal1 header { font-size: 20px; line-height: 30px; min-height: 30px; font-weight: bold; padding: 0 30px; }
+
+.modal1 .content1 { min-height: 30px; padding: 5px 30px; }
+
 
 .bounce-in-right {
   -webkit-animation: bounce-in-right 1.1s both;
