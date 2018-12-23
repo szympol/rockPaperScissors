@@ -3,6 +3,7 @@
 
 var output = document.getElementById('output');
 var result = document.getElementById('result');
+var tbody = document.querySelector('tbody');
 
 var params = {
     wins: 0,
@@ -82,6 +83,7 @@ function clear() {
     result.innerHTML = '';
     params.results = [];
     params.tableRow = [];
+    tbody.innerHTML = '';
 };
 
 
@@ -187,7 +189,6 @@ for(var i = 0; i < modals.length; i++){
 
 //table score
 function tableScore(){
-    var tbody = document.querySelector('tbody');
     for (var i = 0; i < params.results.length; i++) {
         var roundNumber = i + 1;
         params.tableRow.push('<tr><td>' + roundNumber + '</td><td>' + params.results[i].player + '</td><td>' + params.results[i].computer + '</td><td>' + params.results[i].winner + '</td><td>' + params.results[i].gameResult + '</td></tr>');
