@@ -197,6 +197,7 @@ function tableScore(){
 }
 
 
+
 //remove display none of Icons
 function unhideRockPaperScissorsIcons() {
     var unhideRockPaperScissorsIcons = document.getElementById('buttonAll');
