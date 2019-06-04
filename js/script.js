@@ -102,8 +102,8 @@ var scores = function () {
         hideRockPaperScissorsIcons();
         unhideHowToStartGameAfterOne();
         hideAnimationHowToStartNewGame();
-        showModal(event);
         tableScore();
+        setTimeout(function(){ showModal(event)}, 3000);
     }
 };
 
@@ -154,7 +154,7 @@ var compare = function (choice1, choice2) {
 //modal to show a table score
 
 var showModal = function(event){
-    event.preventDefault();
+    //event.preventDefault();
     var modals = document.querySelectorAll('.modal1');
     for (i=0; i < modals.length; i++ ) {
         modals[i].classList.remove('show');
