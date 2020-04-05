@@ -1,5 +1,5 @@
 
-[<img src="https://github.com/szympol/rockPaperScissors/blob/master/images/main.JPG?raw=true" align="right" alt="rockPaperScissors" width="40%">](https://github.com/szympol/rockPaperScissors/blob/master/images/main.JPG)
+[<img src="https://github.com/szympol/rockPaperScissors/blob/master/images/rockPaperScissorsGame.jpg?raw=true" align="right" alt="rockPaperScissors" width="40%">](https://github.com/szympol/rockPaperScissors/blob/master/images/rockPaperScissorsGame.jpg)
 
 # Rock-Paper-Scissors Game
 

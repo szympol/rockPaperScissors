@@ -29,7 +29,7 @@ body {
   height: 100vh;
   text-align: center;
   padding: 5%;
-  background: radial-gradient(#ff5d71 50%, #EB3349);
+  background: radial-gradient(#b2ebf2 50%, #00bcd4);
   background-repeat: no-repeat;
 }
 
@@ -51,7 +51,7 @@ body {
 
 #scoreboard div > p {
   padding: 5px;
-  border: 1px dashed lightgrey;
+  border: 1px dashed black;
 }
 
 .scoreboard-row {
@@ -72,22 +72,24 @@ body {
   border-color: transparent !important;
 
   &:hover {
-    color: #fb97a2;
+    color: rgba(0,0,0, 0.5);
     background: transparent;
     transform: scale(1.5);
   }
 }
 
 #newGame {
-  background-color: #e82038;
-  color: #383735;
+  background-color: #000;
+  color: #fff;
   border: 0px;
   outline: none;
   margin-top: 15px;
   border-radius: 30px;
-  transition: background-color 0.3s ease-out;
+  box-shadow: 3px 4px 13px 1px rgba(0,0,0,0.75); 
+  transition: all 0.3s ease-out;
   &:hover{
-    background: #fb97a2;
+    background-color: #fff;
+    color: #000;
   }
 }
 

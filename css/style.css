@@ -111,23 +111,23 @@ template { display: none; }
 
 .row:before, .row:after { content: ""; display: table; clear: both; }
 
-body { padding: 10px; margin: 0 auto; height: 100vh; text-align: center; padding: 5%; background: radial-gradient(#ff5d71 50%, #EB3349); background-repeat: no-repeat; }
+body { padding: 10px; margin: 0 auto; height: 100vh; text-align: center; padding: 5%; background: radial-gradient(#b2ebf2 50%, #00bcd4); background-repeat: no-repeat; }
 
 [class*="Icon"] { max-width: 100%; background-color: transparent; border: 0px solid transparent !important; border-radius: 4px; outline: none; }
 
 .scoreboard-placement { margin: 0px 15px 0px 15px; text-align: center; }
 
-#scoreboard div > p { padding: 5px; border: 1px dashed lightgrey; }
+#scoreboard div > p { padding: 5px; border: 1px dashed black; }
 
 .scoreboard-row { font-size: 18px; display: inline-block; }
 
 .fa { font-size: 70px; color: black; padding: 10px 50px 50px 50px; margin-top: 40px; transition: all .2s ease-in-out; cursor: pointer; outline: none; -ms-touch-action: manipulation; touch-action: manipulation; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; border-color: transparent !important; }
 
-.fa:hover { color: #fb97a2; background: transparent; transform: scale(1.5); }
+.fa:hover { color: rgba(0, 0, 0, 0.5); background: transparent; transform: scale(1.5); }
 
-#newGame { background-color: #e82038; color: #383735; border: 0px; outline: none; margin-top: 15px; border-radius: 30px; transition: background-color 0.3s ease-out; }
+#newGame { background-color: #000; color: #fff; border: 0px; outline: none; margin-top: 15px; border-radius: 30px; box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, 0.75); transition: all 0.3s ease-out; }
 
-#newGame:hover { background: #fb97a2; }
+#newGame:hover { background-color: #fff; color: #000; }
 
 .displayNone { display: none; }
 
